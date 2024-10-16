@@ -663,86 +663,6 @@ class Flexure(Member):
         # spacing.append(t12)
 
         return spacing
-    def func_for_validation(self, design_dictionary):
-        print(f"func_for_validation here")
-        all_errors = []
-        self.design_status = False
-        flag = False
-        self.output_values(self, flag)
-        flag1 = False
-        flag2 = False
-        flag3 = False
-        option_list = self.input_values(self)
-        missing_fields_list = []
-        print(f'func_for_validation option_list {option_list}'
-            f"\n  design_dictionary {design_dictionary}"
-              )
-        for option in option_list:
-            if option[2] == TYPE_TEXTBOX or option[0] == KEY_LENGTH or option[0] == KEY_SHEAR or option[0] == KEY_MOMENT:
-                try:
-                    if design_dictionary[option[0]] == '':
-                        missing_fields_list.append(option[1])
-                        continue
-                    if option[0] == KEY_LENGTH:
-                        if float(design_dictionary[option[0]]) <= 0.0:
-                            print("Input value(s) cannot be equal or less than zero.")
-                            error = "Input value(s) cannot be equal or less than zero."
-                            all_errors.append(error)
-                        
-                        else:
-                            flag1 = True
-                    elif option[0] == KEY_SHEAR:
-                        if float(design_dictionary[option[0]]) <= 0.0:
-                            print("Input value(s) cannot be equal or less than zero.")
-                            error = "Input value(s) cannot be equal or less than zero."
-                            all_errors.append(error)
-                        else:
-                            flag2 = True
-                    elif option[0] == KEY_MOMENT:
-                        if float(design_dictionary[option[0]]) <= 0.0:
-                            print("Input value(s) cannot be equal or less than zero.")
-                            error = "Input value(s) cannot be equal or less than zero."
-                            all_errors.append(error)
-                        else:
-                            flag3 = True
-                except:
-                        error = "Input value(s) are not valid"
-                        all_errors.append(error)   
-            # elif type(design_dictionary[option[0]]) != 'float':
-            #             print("Input value(s) are not valid")
-            #             error = "Input value(s) are not valid"
-            #             all_errors.append(error)
-            
-            # elif option[2] == TYPE_COMBOBOX and option[0] not in [KEY_SEC_PROFILE, KEY_END1, KEY_END2, KEY_DESIGN_TYPE_FLEXURE, KEY_BENDING, KEY_SUPPORT]:
-            #     val = option[3]
-            #     if design_dictionary[option[0]] == val[0]:
-            #         missing_fields_list.append(option[1])
-                   
-
-        if len(missing_fields_list) > 0:
-            error = self.generate_missing_fields_error_string(self, missing_fields_list)
-            all_errors.append(error)
-        else:
-            flag = True
-
-        if flag and flag1 and flag2 and flag3:
-            print(f"\n design_dictionary{design_dictionary}")
-            self.set_input_values(self, design_dictionary)
-            if self.design_status ==False and len(self.failed_design_dict)>0:
-                logger.error(
-                    "Design Failed, Check Design Report"
-                )
-                return # ['Design Failed, Check Design Report'] @TODO
-            elif self.design_status:
-                pass
-            else:
-                logger.error(
-                    "Design Failed. Selender Sections Selected"
-                )
-                return # ['Design Failed. Selender Sections Selected']
-        else:
-            return all_errors
-
     def get_3d_components(self):
 
         components = []
@@ -752,7 +672,6 @@ class Flexure(Member):
 
         return components
 
-    # warn if a beam of older version of IS 808 is selected
     def warn_text(self):
         """ give logger warning when a beam from the older version of IS 808 is selected """
         global logger
@@ -763,7 +682,7 @@ class Flexure(Member):
                 if section in red_list:
                     logger.warning(" : You are using a section ({}) (in red color) that is not available in latest version of IS 808".format(section))
 
-    # Setting inputs from the input dock GUI
+    # warn if a beam of older version of IS 808 is selected
     def set_input_values(self, design_dictionary):
         '''
         TODO
@@ -796,13 +715,13 @@ class Flexure(Member):
             self.design_type = VALUES_SUPP_TYPE[0]
             self.bending_type = KEY_DISP_BENDING2 #if design_dictionary[KEY_BENDING] != 'Disabled' else 'NA'
             self.support_cndition_shear_buckling = 'NA'
-            
+
         elif self.design_type_temp == VALUES_SUPP_TYPE_temp[2]:
             self.design_type = VALUES_SUPP_TYPE[1]
             self.bending_type = KEY_DISP_BENDING1
             self.support_cndition_shear_buckling = 'NA'
 
-        # section user data        
+        # section user data
         self.length = float(design_dictionary[KEY_LENGTH])
 
         # end condition
@@ -855,30 +774,111 @@ class Flexure(Member):
         self.design_status_list = []
         self.design_status = False
         self.sec_prop_initial_dict = {}
-        self.failed_design_dict = {}    
+        self.failed_design_dict = {}
         self.design(self, design_dictionary)
         if self.flag:
             self.results(self, design_dictionary)
-        
-            
+
+
         # else:
         #     pass
         #     # logger.warning(
         #     #         "Plastic section modulus of selected sections is less than required."
         #     #     )
-        #     return 
+        #     return
 
-    
-    # Simulation starts here
+    # Setting inputs from the input dock GUI
     def design(self, design_dictionary, flag=0):
         '''
         TODO optimimation_tab_check changes to include self.material_property = Material(material_grade=self.material, thickness=0)
             for each section
         '''
-        
+
         self.optimization_tab_check(self)
 
         self.design_beam(self, design_dictionary)
+
+
+    def func_for_validation(self, design_dictionary):
+        print(f"func_for_validation here")
+        all_errors = []
+        self.design_status = False
+        flag = False
+        self.output_values(self, flag)
+        flag1 = False
+        flag2 = False
+        flag3 = False
+        option_list = self.input_values(self)
+        missing_fields_list = []
+        print(f'func_for_validation option_list {option_list}'
+            f"\n  design_dictionary {design_dictionary}"
+              )
+        for option in option_list:
+            if option[2] == TYPE_TEXTBOX or option[0] == KEY_LENGTH or option[0] == KEY_SHEAR or option[0] == KEY_MOMENT:
+                try:
+                    if design_dictionary[option[0]] == '':
+                        missing_fields_list.append(option[1])
+                        continue
+                    if option[0] == KEY_LENGTH:
+                        if float(design_dictionary[option[0]]) <= 0.0:
+                            print("Input value(s) cannot be equal or less than zero.")
+                            error = "Input value(s) cannot be equal or less than zero."
+                            all_errors.append(error)
+
+                        else:
+                            flag1 = True
+                    elif option[0] == KEY_SHEAR:
+                        if float(design_dictionary[option[0]]) <= 0.0:
+                            print("Input value(s) cannot be equal or less than zero.")
+                            error = "Input value(s) cannot be equal or less than zero."
+                            all_errors.append(error)
+                        else:
+                            flag2 = True
+                    elif option[0] == KEY_MOMENT:
+                        if float(design_dictionary[option[0]]) <= 0.0:
+                            print("Input value(s) cannot be equal or less than zero.")
+                            error = "Input value(s) cannot be equal or less than zero."
+                            all_errors.append(error)
+                        else:
+                            flag3 = True
+                except:
+                        error = "Input value(s) are not valid"
+                        all_errors.append(error)
+            # elif type(design_dictionary[option[0]]) != 'float':
+            #             print("Input value(s) are not valid")
+            #             error = "Input value(s) are not valid"
+            #             all_errors.append(error)
+
+            # elif option[2] == TYPE_COMBOBOX and option[0] not in [KEY_SEC_PROFILE, KEY_END1, KEY_END2, KEY_DESIGN_TYPE_FLEXURE, KEY_BENDING, KEY_SUPPORT]:
+            #     val = option[3]
+            #     if design_dictionary[option[0]] == val[0]:
+            #         missing_fields_list.append(option[1])
+
+
+        if len(missing_fields_list) > 0:
+            error = self.generate_missing_fields_error_string(self, missing_fields_list)
+            all_errors.append(error)
+        else:
+            flag = True
+
+        if flag and flag1 and flag2 and flag3:
+            print(f"\n design_dictionary{design_dictionary}")
+            self.set_input_values(self, design_dictionary)
+            if self.design_status ==False and len(self.failed_design_dict)>0:
+                logger.error(
+                    "Design Failed, Check Design Report"
+                )
+                return # ['Design Failed, Check Design Report'] @TODO
+            elif self.design_status:
+                pass
+            else:
+                logger.error(
+                    "Design Failed. Selender Sections Selected"
+                )
+                return # ['Design Failed. Selender Sections Selected']
+        else:
+            return all_errors
+    # Simulation starts here
 
     def optimization_tab_check(self):
         '''
@@ -903,7 +903,7 @@ class Flexure(Member):
             )
             # logger.info("Provide an appropriate input and re-design.")
             logger.info("Assuming a default value of 1.0")
-            self.steel_cost_per_kg = 50
+            self.steel_cost_per_kg = 65
             self.effective_area_factor = 1
             self.design_status = False
             # self.design_status_list.append(self.design_status)
