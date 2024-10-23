@@ -289,10 +289,8 @@ class Flexure(Member):
         t8 = (KEY_SHEAR, KEY_DISP_SHEAR+'*', TYPE_TEXTBOX, None, True, 'No Validator')
         options_list.append(t8)
 
-        t8 = (KEY_BEARING_LENGTH, KEY_DISP_BEARING_LENGTH,TYPE_TEXTBOX, None, True, 'No Validator')
+        t8 = (KEY_BEARING_LENGTH, KEY_DISP_BEARING_LENGTH,TYPE_TEXTBOX, 0, True, 'No Validator')
         options_list.append(t8)
-
-
 
         return options_list
 
