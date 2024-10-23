@@ -122,7 +122,7 @@ class Flexure(Member):
         t1 = (KEY_DISP_COLSEC, TYPE_TEXTBOX, [KEY_SEC_FU, KEY_SEC_FY])
         design_input.append(t1)
 
-        t2 = ("Optimization", TYPE_TEXTBOX, [ KEY_EFFECTIVE_AREA_PARA, KEY_LENGTH_OVERWRITE, KEY_BEARING_LENGTH]) #, KEY_STEEL_COST
+        t2 = ("Optimization", TYPE_TEXTBOX, [ KEY_EFFECTIVE_AREA_PARA, KEY_LENGTH_OVERWRITE]) #, KEY_STEEL_COST , KEY_BEARING_LENGTH
         design_input.append(t2)
 
         t2 = ("Optimization", TYPE_COMBOBOX, [KEY_ALLOW_CLASS, KEY_LOAD]) #, KEY_STEEL_COST, KEY_ShearBucklingOption
@@ -140,7 +140,7 @@ class Flexure(Member):
         t1 = (KEY_MATERIAL, [KEY_SEC_MATERIAL], 'Input Dock')
         design_input.append(t1)
 
-        t2 = (None, [KEY_ALLOW_CLASS, KEY_EFFECTIVE_AREA_PARA, KEY_LENGTH_OVERWRITE,KEY_BEARING_LENGTH, KEY_LOAD, KEY_DP_DESIGN_METHOD], '') # KEY_ShearBucklingOption
+        t2 = (None, [KEY_ALLOW_CLASS, KEY_EFFECTIVE_AREA_PARA, KEY_LOAD, KEY_DP_DESIGN_METHOD], '') # KEY_ShearBucklingOptionKEY_LENGTH_OVERWRITE,KEY_BEARING_LENGTH,
         design_input.append(t2)
 
         return design_input
@@ -167,10 +167,9 @@ class Flexure(Member):
             KEY_ALLOW_CLASS: 'Yes',
             KEY_EFFECTIVE_AREA_PARA: '1.0',
             KEY_LENGTH_OVERWRITE :'NA',
-            KEY_BEARING_LENGTH : 'NA',
             KEY_LOAD : 'Normal',
             KEY_DP_DESIGN_METHOD: "Limit State Design",
-            # KEY_ShearBucklingOption: KEY_DISP_SB_Option[0],
+            # KEY_ShearBucklingOption: KEY_DISP_SB_Option[0],            KEY_BEARING_LENGTH : 'NA',
         }[key]
 
         return val

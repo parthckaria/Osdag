@@ -2781,7 +2781,7 @@ class Member(Main):
     def optimization_tab_flexure_design(self, input_dictionary):
         print(f"optimization_tab_flexure_design input_dictionary {input_dictionary}")
         values = {
-                   KEY_EFFECTIVE_AREA_PARA: '1.0', KEY_ALLOW_CLASS: 'Yes', KEY_LOAD : 'Normal', KEY_LENGTH_OVERWRITE :'NA', KEY_BEARING_LENGTH: 'NA'} # , KEY_ShearBucklingOption : KEY_DISP_SB_Option[0]
+                   KEY_EFFECTIVE_AREA_PARA: '1.0', KEY_ALLOW_CLASS: 'Yes', KEY_LOAD : 'Normal', KEY_LENGTH_OVERWRITE :'NA'} # , KEY_ShearBucklingOption : KEY_DISP_SB_Option[0], KEY_BEARING_LENGTH: 'NA'
 
         for key in values.keys():
             if key in input_dictionary.keys():
@@ -2806,9 +2806,9 @@ class Member(Main):
             KEY_LENGTH_OVERWRITE, KEY_DISPP_LENGTH_OVERWRITE, TYPE_TEXTBOX, None, values[KEY_LENGTH_OVERWRITE])
         optimum.append(t2)
 
-        t2 = (
-            KEY_BEARING_LENGTH, KEY_DISP_BEARING_LENGTH + ' (mm)', TYPE_TEXTBOX, None, values[KEY_BEARING_LENGTH])
-        optimum.append(t2)
+        #t2 = (
+        #    KEY_BEARING_LENGTH, KEY_DISP_BEARING_LENGTH + ' (mm)', TYPE_TEXTBOX, None, values[KEY_BEARING_LENGTH])
+        #optimum.append(t2)
 
         print("input_dictionary",input_dictionary)
 
