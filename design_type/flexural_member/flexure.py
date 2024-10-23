@@ -255,7 +255,7 @@ class Flexure(Member):
         # options_list.append(t3)
 
         #
-        t4 = (KEY_SUPPORT, KEY_DISP_SUPPORT, TYPE_NOTE,KEY_DISP_SUPPORT1, True, 'No Validator')
+        t4 = (KEY_SUPPORT, KEY_DISP_SUPPORT, TYPE_COMBOBOX,KEY_DISP_SUPPORT_LIST, True, 'No Validator')
         options_list.append(t4)
 
         t12 = (KEY_IMAGE, None, TYPE_IMAGE, Simply_Supported_img, True, 'No Validator')
@@ -318,7 +318,7 @@ class Flexure(Member):
         elif self[0] == Torsion_Restraint2:
             return [Warping_Restraint5]
         else:
-            return [Warping_Restraint5]        
+            return [Warping_Restraint5]
 
 
     def fn_supp_image(self):
