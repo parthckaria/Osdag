@@ -35,7 +35,6 @@ from utils.common.Section_Properties_Calculator import BBAngle_Properties
 from utils.common import is800_2007
 from utils.common.component import *
 
-
 class Flexure(Member):
 
     def __init__(self):
@@ -600,7 +599,14 @@ class Flexure(Member):
         t2 = (KEY_NON_DIM_ESR, KEY_DISP_NON_DIM_ESR, TYPE_TEXTBOX, self.result_nd_esr if flag else '', True)
         out_list.append(t2)
 
+        #t1 = (None, KEY_DEFLECTION, TYPE_TITLE, None, True)
+        #out_list.append(t1)
 
+        t2 = (KEY_PERMISSIBLEDEF,KEY_DISP_PERMISSIBLEDEF,TYPE_TEXTBOX, self.result_nd_esr if flag else '', True)
+        out_list.append(t2)
+
+        t2 = (KEY_ACTUALDEF, KEY_DISP_ACTUALDEF, TYPE_TEXTBOX, self.result_nd_esr if flag else '', True)
+        out_list.append(t2)
 
         return out_list
     def spacing(self, status):
