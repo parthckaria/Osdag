@@ -602,6 +602,9 @@ class Flexure(Member):
         #t1 = (None, KEY_DEFLECTION, TYPE_TITLE, None, True)
         #out_list.append(t1)
 
+        t1 = (None, KEY_DEFLECTION, TYPE_TITLE, None, True)
+        out_list.append(t1)
+
         t2 = (KEY_PERMISSIBLEDEF,KEY_DISP_PERMISSIBLEDEF,TYPE_TEXTBOX, self.result_nd_esr if flag else '', True)
         out_list.append(t2)
 
