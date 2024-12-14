@@ -281,6 +281,9 @@ class Flexure(Member):
         t5 = (KEY_LENGTH, KEY_DISP_LENGTH_BEAM, TYPE_TEXTBOX, None, True, 'Int Validator')
         options_list.append(t5)
 
+        t13 = (KEY_DEF_BUILDTYPE, DISP_DEF_BUILDTYPE, TYPE_COMBOBOX, Defl_Buildtype_list, True, 'No Validator')
+        options_list.append(t13)
+
         t7 = (None, DISP_TITLE_FSL, TYPE_TITLE, None, True, 'No Validator')
         options_list.append(t7)
 
