@@ -497,6 +497,13 @@ class IS800_2007(object):
                         "gamma_mw": {KEY_DP_FAB_SHOP: 1.25, KEY_DP_FAB_FIELD: 1.50}
                         }
 
+       cl_5_6_1_Table_6i = {
+        "Industrial - Elastic Cladding": 0.0042,
+        "Industrial - Brittle Cladding": 0.0033,
+        "Other Buildings - Not susceptible to cracking": 0.0033,
+        "Other Buildings - Susceptible to cracking": 0.0027
+    }
+
     # ==========================================================================
     """    SECTION  6     DESIGN OF TENSION MEMBERS   """
 
