@@ -2867,24 +2867,83 @@ class Member(Main):
         optimum.append(t9)
 
         return optimum
-    
-    def Stiffener_design(self, input_dictionary):
+
+    def optimization_tab_welded_plate_girder_design(self, input_dictionary):
+        print(f"optimization_tab_flexure_design input_dictionary {input_dictionary}")
+        values = {
+                   KEY_EFFECTIVE_AREA_PARA: '1.0', KEY_ALLOW_CLASS: 'Yes', KEY_LOAD : 'Normal', KEY_LENGTH_OVERWRITE :'NA',
+                   KEY_ShearBucklingOption : KEY_DISP_SB_Option[0]}
+
+        for key in values.keys():
+            if key in input_dictionary.keys():
+                values[key] = input_dictionary[key]
+
         optimum = []
+
+        t2 = (
+        KEY_EFFECTIVE_AREA_PARA, KEY_DISP_EFFECTIVE_AREA_PARA, TYPE_TEXTBOX, None, values[KEY_EFFECTIVE_AREA_PARA])
+        optimum.append(t2)
+
+        t1 = (KEY_ALLOW_CLASS, KEY_DISP_CLASS, TYPE_COMBOBOX, ['Yes', 'No'], values[KEY_ALLOW_CLASS])
+        optimum.append(t1)
+
+        t1 = (KEY_LOAD, KEY_DISP_LOAD, TYPE_COMBOBOX, KEY_DISP_LOAD_list, values[KEY_LOAD])
+        optimum.append(t1)
+
+        t2 = (
+            KEY_LENGTH_OVERWRITE, KEY_DISPP_LENGTH_OVERWRITE, TYPE_TEXTBOX, None, values[KEY_LENGTH_OVERWRITE])
+        optimum.append(t2)
+
+
+        t1 = (None, KEY_WEB_BUCKLING, TYPE_TITLE, None, True, 'No Validator')
+        optimum.append(t1)
+        t2 = (KEY_ShearBucklingOption, KEY_ShearBuckling, TYPE_COMBOBOX, KEY_DISP_SB_Option, values[KEY_ShearBucklingOption])
+        optimum.append(t2)
+        t9 = ("textBrowser", "", TYPE_TEXT_BROWSER, FLEXURE_OPTIMIZATION_DESCRIPTION , None)
+        optimum.append(t9)
+
+        return optimum
+
+    def Stiffener_design(self, input_dictionary):
+
         values = {KEY_IntermediateStiffener:'Yes',
-                  KEY_IntermediateStiffener_spacing:'NA'
+                  KEY_IntermediateStiffener_spacing:'NA',
+                  KEY_IntermediateStiffener_thickness: '6'
                    }
 
         for key in values.keys():
             if key in input_dictionary.keys():
                 values[key] = input_dictionary[key]
+
+        optimum = []
+
         t8 = (KEY_IntermediateStiffener, KEY_DISP_IntermediateStiffener, TYPE_COMBOBOX, ['Yes','No'],  values[KEY_IntermediateStiffener])
         optimum.append(t8)
 
         t8 = (KEY_IntermediateStiffener_spacing, KEY_DISP_IntermediateStiffener_spacing, TYPE_TEXTBOX, None, values[KEY_IntermediateStiffener_spacing])
         optimum.append(t8)
-        
+
+        t2 = (KEY_IntermediateStiffener_thickness, KEY_DISP_IntermediateStiffener_thickness, TYPE_COMBOBOX_CUSTOMIZED, KEY_Stiff_Thick_list, values[KEY_IntermediateStiffener_thickness])
+        optimum.append(t2)
+
         return optimum
-        
+
+    def girder_geometry(self, input_dictionary):
+        values = {
+            KEY_IS_IT_SYMMETRIC : 'Symmetrical'
+        }
+
+        for key in values.keys():
+            if key in input_dictionary.keys():
+                values[key] = input_dictionary[key]
+
+        optimum = []
+
+        t2 = (KEY_IS_IT_SYMMETRIC, KEY_DISP_IS_IT_SYMMETRIC, TYPE_COMBOBOX, KEY_DISP_SYMMETRIC_list, values[KEY_IS_IT_SYMMETRIC])
+        optimum.append(t1)
+
+        return optimum
+
     ########################################
     # Design Preference Functions End
     ########################################
@@ -2921,6 +2980,11 @@ class Member(Main):
     @staticmethod
     def plate_thick_customized_IS():
         d = PLATE_THICKNESS_SAIL
+        return d
+
+    @staticmethod
+    def plate_thickness_for_stiffener():
+        d = KEY_Stiff_Thick_list
         return d
     #
     # @staticmethod

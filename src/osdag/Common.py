@@ -646,7 +646,7 @@ KEY_DISP_WidthTensionField= 'Width of Tension Field($w_{tf}$)'
 # Plate Girder
 ###################################
 KEY_PLATE_GIRDER_MAIN_MODULE = 'PLATE GIRDER'
-KEY_DISP_PLATE_GIRDER_WELDED = 'PLATE GIRDER - WELDED'
+KEY_DISP_PLATE_GIRDER_WELDED = 'PLATE GIRDER'
 KEY_tf = 'TF.Data'
 KEY_tw = 'TW.Data'
 KEY_dw = 'DW.Data'
@@ -660,6 +660,40 @@ KEY_DISP_IntermediateStiffener = 'Intermediate Stiffener'
 KEY_DISP_Plate_Girder_PROFILE = 'Section Profile'
 KEY_IntermediateStiffener_spacing = 'IntermediateStiffener.Spacing'
 KEY_DISP_IntermediateStiffener_spacing = 'Intermediate Stiffener Spacing'
+KEY_IntermediateStiffener_thickness = 'IntermediateStiffener.Thickness'
+KEY_DISP_IntermediateStiffener_thickness = 'Intermediate Stiffener Thickness'
+KEY_IS_IT_SYMMETRIC = 'Girder.Symmetry'
+KEY_DISP_IS_IT_SYMMETRIC = 'Symmetry'
+KEY_DISP_SYM = 'Symmetric Girder'
+KEY_DISP_UNSYM = 'Unsymmetric Girder'
+KEY_DISP_SYMMETRIC_list = list((KEY_DISP_SYM, KEY_DISP_UNSYM))
+KEY_TOP_FLANGE_THICKNESS_PG = 'TopFlange.Thickness'
+KEY_DISP_TOP_FLANGE_THICKNESS_PG = 'Top Flange Thickness (mm)'
+KEY_OVERALL_DEPTH_PG = 'Total.Depth'
+KEY_DISP_OVERALL_DEPTH_PG = 'Total Depth (mm)'
+KEY_WEB_THICKNESS_PG = 'Web.Thickness'
+KEY_DISP_WEB_THICKNESS_PG = 'Web Thickness (mm)'
+KEY_TOP_Bflange_PG = 'Topflange.Width'
+KEY_DISP_TOP_Bflange_PG = 'Width of Top Flange (mm)'
+KEY_BOTTOM_Bflange_PG = 'Bottomflange.Width'
+KEY_DISP_BOTTOM_Bflange_PG = 'Width of Bottom Flange (mm)'
+KEY_BOTTOM_FLANGE_THICKNESS_PG = 'BottomFlange.Thickness'
+KEY_DISP_BOTTOM_FLANGE_THICKNESS_PG = 'Bottom Flange Thickness (mm)'
+KEY_STR_TYPE = 'Structure.Type'
+KEY_DISP_STR_TYPE = 'Type of Structure'
+KEY_WEB_PHILOSOPHY = 'Web.Philosophy'
+KEY_DISP_WEB_PHILOSOPHY = 'Web Philosophy'
+KEY_DISP_SECTION_DATA_PG = 'Data'
+KEY_LOADING = 'Loading Data'
+KEY_DISP_STR_TYP1 = 'Highway Bridge'
+KEY_DISP_STR_TYP2 = 'Railway Bridge'
+KEY_DISP_STR_TYP3 = 'Industrial Structure'
+KEY_DISP_STR_TYPE_list = list((KEY_DISP_STR_TYP1, KEY_DISP_STR_TYP2, KEY_DISP_STR_TYP3))
+KEY_DISP_PHILO1 = 'Thin Web with ITS'
+KEY_DISP_PHILO2 = 'Thick Web without ITS'
+WEB_PHILOSOPHY_list = list((KEY_DISP_PHILO1, KEY_DISP_PHILO2))
+KEY_DISP_DESIGN_STIFFER = 'Stiffener Design'
+
 ###################################
 # All Input Keys
 ###################################
@@ -807,7 +841,7 @@ PLATE_THICKNESS_IS_1730_1989 = ['5', '6', '7', '8', '10', '12', '14', '16', '18'
 # standard as per SAIL's product brochure
 PLATE_THICKNESS_SAIL = ['8', '10', '12', '14', '16', '18', '20', '22', '25', '28', '32', '36', '40', '45', '50', '56', '63', '75', '80', '90', '100',
                         '110', '120']
-
+KEY_Stiff_Thick_list = ['4', '6', '8', '10', '12', '14', '16']
 VALUES_PLATETHICKNESS_CUSTOMIZED = PLATE_THICKNESS_SAIL
 VALUES_PLATETHK_CUSTOMIZED = PLATE_THICKNESS_SAIL
 VALUES_ENDPLATE_THICKNESS_CUSTOMIZED = PLATE_THICKNESS_SAIL
@@ -945,6 +979,7 @@ KEY_DISP_MATERIAL = 'Material *'
 KEY_DISP_SUPTNGSEC = 'Supporting Section'
 KEY_DISP_SUPTNGSEC_REPORT = 'Supporting Section - Mechanical Properties'
 KEY_DISP_COLSEC = 'Column Section *'
+KEY_DISP_GIRDERSEC = 'Girder Properties'
 KEY_DISP_COLSEC_REPORT = 'Column Section'
 KEY_DISP_PRIBM = 'Primary Beam *'
 KEY_DISP_SUPTDSEC = 'Supported Section'

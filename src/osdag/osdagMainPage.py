@@ -167,7 +167,7 @@ from .design_type.compression_member.Column import ColumnDesign
 from .design_type.flexural_member.flexure import Flexure
 from .design_type.flexural_member.flexure_cantilever import Flexure_Cantilever
 from .design_type.flexural_member.flexure_othersupp import Flexure_Misc
-# from .design_type.plate_girder.weldedPlateGirder import PlateGirderWelded
+from .design_type.plate_girder.weldedPlateGirder import PlateGirderWelded
 # from .cad.cad_common import call_3DBeam
 from .APP_CRASH.Appcrash import api as appcrash
 import configparser
@@ -726,6 +726,7 @@ class OsdagMainWindow(QMainWindow):
             self.ui2 = Ui_ModuleWindow(PlateGirderWelded, ' ')
             self.ui2.show()
             self.ui2.closed.connect(self.show)
+            return
 
 ################################# Help Actions ############################################
 
