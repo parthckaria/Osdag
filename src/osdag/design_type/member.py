@@ -2863,7 +2863,7 @@ class Member(Main):
         optimum.append(t1)
         t2 = (KEY_ShearBucklingOption, KEY_ShearBuckling, TYPE_COMBOBOX, KEY_DISP_SB_Option, values[KEY_ShearBucklingOption])
         optimum.append(t2)
-        t9 = ("textBrowser", "", TYPE_TEXT_BROWSER, FLEXURE_OPTIMIZATION_DESCRIPTION , None)
+        t9 = ("textBrowser", "", TYPE_TEXT_BROWSER, "DUMMYTEXT TODO: replace" , None)
         optimum.append(t9)
 
         return optimum
@@ -2899,7 +2899,7 @@ class Member(Main):
         optimum.append(t1)
         t2 = (KEY_ShearBucklingOption, KEY_ShearBuckling, TYPE_COMBOBOX, KEY_DISP_SB_Option, values[KEY_ShearBucklingOption])
         optimum.append(t2)
-        t9 = ("textBrowser", "", TYPE_TEXT_BROWSER, FLEXURE_OPTIMIZATION_DESCRIPTION , None)
+        t9 = ("textBrowser", "", TYPE_TEXT_BROWSER, "DUMMYTEXT TODO: replace" , None)
         optimum.append(t9)
 
         return optimum
@@ -2940,7 +2940,7 @@ class Member(Main):
         optimum = []
 
         t2 = (KEY_IS_IT_SYMMETRIC, KEY_DISP_IS_IT_SYMMETRIC, TYPE_COMBOBOX, KEY_DISP_SYMMETRIC_list, values[KEY_IS_IT_SYMMETRIC])
-        optimum.append(t1)
+        optimum.append(t2)
 
         return optimum
 
