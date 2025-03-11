@@ -239,9 +239,6 @@ class PlateGirderWelded(Member):
 
         c_lst = []
 
-        t1 = (KEY_SECSIZE, self.fn_profile_section)
-        c_lst.append(t1)
-
         return c_lst
 
     def input_values(self):
@@ -374,9 +371,6 @@ class PlateGirderWelded(Member):
     def input_value_changed(self):
 
         lst = []
-
-        t1 = ([KEY_SEC_PROFILE], KEY_SECSIZE, TYPE_COMBOBOX_CUSTOMIZED, self.fn_profile_section)
-        lst.append(t1)
 
         t3 = ([KEY_TORSIONAL_RES], KEY_WARPING_RES, TYPE_COMBOBOX, self.fn_torsion_warping)
         lst.append(t3)
