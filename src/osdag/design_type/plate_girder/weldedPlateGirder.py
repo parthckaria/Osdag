@@ -1,6 +1,8 @@
 """
 
 @Author:    Rutvik Joshi - Osdag Team, IIT Bombay [(P) rutvikjoshi63@gmail.com / 30005086@iitb.ac.in]
+12.03.2025
+Revised Design for GUI: Parth Karia - Osdag Team, IIT Bombay [30006096@iitb.ac.in]
 
 @Module - Beam Design- Simply Supported member
            - Laterally Supported Beam [Moment + Shear]
@@ -64,7 +66,7 @@ class PlateGirderWelded(Member):
         """
         tabs = []
 
-        t1 = (KEY_DISP_GIRDERSEC, TYPE_TAB_1, self.tab_section)
+        t1 = (KEY_DISP_GIRDERSEC, TYPE_TAB_1, self.tab_girder_sec)
         tabs.append(t1)
 
         t5 = ("Optimisation", TYPE_TAB_2, self.optimization_tab_welded_plate_girder_design)
@@ -83,26 +85,26 @@ class PlateGirderWelded(Member):
     def tab_value_changed(self):
         change_tab = []
 
-        t1 = (KEY_DISP_GIRDERSEC, [KEY_SEC_MATERIAL], [KEY_SEC_FU, KEY_SEC_FY], TYPE_TEXTBOX, self.get_fu_fy_I_section)
-        change_tab.append(t1)
-
-        t4 = (KEY_DISP_GIRDERSEC, ['Label_1', 'Label_2', 'Label_3', 'Label_4', 'Label_5'],
-              ['Label_11', 'Label_12', 'Label_13', 'Label_14', 'Label_15', 'Label_16', 'Label_17', 'Label_18',
-               'Label_19', 'Label_20', 'Label_21', 'Label_22', KEY_IMAGE], TYPE_TEXTBOX, self.get_I_sec_properties)
-        change_tab.append(t4)
-
-        t5 = (KEY_DISP_GIRDERSEC, ['Label_HS_1', 'Label_HS_2', 'Label_HS_3'],
-              ['Label_HS_11', 'Label_HS_12', 'Label_HS_13', 'Label_HS_14', 'Label_HS_15', 'Label_HS_16', 'Label_HS_17', 'Label_HS_18',
-               'Label_HS_19', 'Label_HS_20', 'Label_HS_21', 'Label_HS_22', KEY_IMAGE], TYPE_TEXTBOX, self.get_SHS_RHS_properties)
-        change_tab.append(t5)
-
-        t6 = (KEY_DISP_GIRDERSEC, ['Label_CHS_1', 'Label_CHS_2', 'Label_CHS_3'],
-              ['Label_CHS_11', 'Label_CHS_12', 'Label_CHS_13', 'Label_HS_14', 'Label_HS_15', 'Label_HS_16', 'Label_21', 'Label_22',
-               KEY_IMAGE], TYPE_TEXTBOX, self.get_CHS_properties)
-        change_tab.append(t6)
-
-        t6 = (KEY_DISP_GIRDERSEC, [KEY_SECSIZE], [KEY_SOURCE], TYPE_TEXTBOX, self.change_source)
-        change_tab.append(t6)
+        # t1 = (KEY_DISP_GIRDERSEC, [KEY_SEC_MATERIAL], [KEY_SEC_FU, KEY_SEC_FY], TYPE_TEXTBOX, self.get_fu_fy_I_section)
+        # change_tab.append(t1)
+        #
+        # t4 = (KEY_DISP_GIRDERSEC, ['Label_1', 'Label_2', 'Label_3', 'Label_4', 'Label_5'],
+        #       ['Label_11', 'Label_12', 'Label_13', 'Label_14', 'Label_15', 'Label_16', 'Label_17', 'Label_18',
+        #        'Label_19', 'Label_20', 'Label_21', 'Label_22', KEY_IMAGE], TYPE_TEXTBOX, self.get_I_sec_properties)
+        # change_tab.append(t4)
+        #
+        # t5 = (KEY_DISP_GIRDERSEC, ['Label_HS_1', 'Label_HS_2', 'Label_HS_3'],
+        #       ['Label_HS_11', 'Label_HS_12', 'Label_HS_13', 'Label_HS_14', 'Label_HS_15', 'Label_HS_16', 'Label_HS_17', 'Label_HS_18',
+        #        'Label_HS_19', 'Label_HS_20', 'Label_HS_21', 'Label_HS_22', KEY_IMAGE], TYPE_TEXTBOX, self.get_SHS_RHS_properties)
+        # change_tab.append(t5)
+        #
+        # t6 = (KEY_DISP_GIRDERSEC, ['Label_CHS_1', 'Label_CHS_2', 'Label_CHS_3'],
+        #       ['Label_CHS_11', 'Label_CHS_12', 'Label_CHS_13', 'Label_HS_14', 'Label_HS_15', 'Label_HS_16', 'Label_21', 'Label_22',
+        #        KEY_IMAGE], TYPE_TEXTBOX, self.get_CHS_properties)
+        # change_tab.append(t6)
+        #
+        # t6 = (KEY_DISP_GIRDERSEC, [KEY_SECSIZE], [KEY_SOURCE], TYPE_TEXTBOX, self.change_source)
+        # change_tab.append(t6)
 
         return change_tab
 
@@ -123,11 +125,11 @@ class PlateGirderWelded(Member):
          """
         design_input = []
 
-        t1 = (KEY_DISP_GIRDERSEC, TYPE_COMBOBOX, [KEY_SEC_MATERIAL])#Need to check
-        design_input.append(t1)
-
-        t1 = (KEY_DISP_GIRDERSEC, TYPE_TEXTBOX, [KEY_SEC_FU, KEY_SEC_FY])
-        design_input.append(t1)
+        # t1 = (KEY_DISP_GIRDERSEC, TYPE_COMBOBOX, [KEY_SEC_MATERIAL])#Need to check
+        # design_input.append(t1)
+        #
+        # t1 = (KEY_DISP_GIRDERSEC, TYPE_TEXTBOX, [KEY_SEC_FU, KEY_SEC_FY])
+        # design_input.append(t1)
 
         t2 = ("Optimisation", TYPE_TEXTBOX, [KEY_EFFECTIVE_AREA_PARA, KEY_LENGTH_OVERWRITE])  # , KEY_STEEL_COST
         design_input.append(t2)
@@ -156,8 +158,8 @@ class PlateGirderWelded(Member):
 
         design_input = []
 
-        t2 = (KEY_MATERIAL, [KEY_DP_DESIGN_METHOD], 'Input Dock')
-        design_input.append(t2)
+        # t2 = (KEY_MATERIAL, [KEY_DP_DESIGN_METHOD], 'Input Dock')
+        # design_input.append(t2)
 
         t2 = (None, [KEY_ALLOW_CLASS, KEY_EFFECTIVE_AREA_PARA, KEY_LENGTH_OVERWRITE, KEY_LOAD, KEY_DP_DESIGN_METHOD,
                      KEY_ShearBucklingOption, KEY_IntermediateStiffener_spacing, KEY_IntermediateStiffener,
@@ -170,19 +172,19 @@ class PlateGirderWelded(Member):
 
         add_buttons = []
 
-        t2 = (KEY_DISP_GIRDERSEC, KEY_SECSIZE, TYPE_COMBOBOX, KEY_SECSIZE, None, None, "Columns")
-        add_buttons.append(t2)
+        # t2 = (KEY_DISP_GIRDERSEC, TYPE_COMBOBOX, KEY_SECSIZE, None, None, "Columns") #, KEY_SECSIZE
+        # add_buttons.append(t2)
 
         return add_buttons
 
     def get_values_for_design_pref(self, key, design_dictionary):
-        if design_dictionary[KEY_MATERIAL] != 'Select Material':
-            material = Material(design_dictionary[KEY_MATERIAL], 41)
-            fu = material.fu
-            fy = material.fy
-        else:
-            fu = ''
-            fy = ''
+        # if design_dictionary[KEY_MATERIAL] != 'Select Material':
+        #     material = Material(design_dictionary[KEY_MATERIAL], 41)
+        #     fu = material.fu
+        #     fy = material.fy
+        # else:
+        #     fu = ''
+        #     fy = ''
 
         val = {
             KEY_ALLOW_CLASS: 'Yes',
@@ -246,7 +248,7 @@ class PlateGirderWelded(Member):
         self.module = KEY_DISP_PLATE_GIRDER_WELDED
         options_list = []
 
-        t1 = (None, KEY_DISP_PLATE_GIRDER_WELDED, TYPE_TITLE, None, True, 'No Validator')
+        t1 = (None, KEY_DISP_PG_SectionDetail, TYPE_TITLE, None, True, 'No Validator')
         options_list.append(t1)
 
         t1 = (KEY_MODULE, KEY_DISP_PLATE_GIRDER_WELDED, TYPE_MODULE, None, True, "No Validator")
@@ -258,20 +260,20 @@ class PlateGirderWelded(Member):
         t2 = (KEY_OVERALL_DEPTH_PG, KEY_DISP_OVERALL_DEPTH_PG, TYPE_TEXTBOX, None, True, 'Int Validator')
         options_list.append(t2)
 
-        t4 = (KEY_WEB_THICKNESS_PG, KEY_WEB_THICKNESS_PG, TYPE_COMBOBOX, ['All', 'Customized'], True,
+        t4 = (KEY_WEB_THICKNESS_PG, KEY_WEB_THICKNESS_PG, TYPE_COMBOBOX, VALUES_PLATETHK, True,
               'No Validator')
         options_list.append(t4)
 
         t2 = (KEY_TOP_Bflange_PG, KEY_DISP_TOP_Bflange_PG, TYPE_TEXTBOX, None, True, 'Int Validator')
         options_list.append(t2)
 
-        t4 = (KEY_TOP_FLANGE_THICKNESS_PG, KEY_DISP_TOP_FLANGE_THICKNESS_PG, TYPE_COMBOBOX, ['All','Customized'], True, 'No Validator')
+        t4 = (KEY_TOP_FLANGE_THICKNESS_PG, KEY_DISP_TOP_FLANGE_THICKNESS_PG, TYPE_COMBOBOX, VALUES_PLATETHK, True, 'No Validator')
         options_list.append(t4)
 
         t2 = (KEY_BOTTOM_Bflange_PG, KEY_DISP_BOTTOM_Bflange_PG, TYPE_TEXTBOX, None, True, 'Int Validator')
         options_list.append(t2)
 
-        t4 = (KEY_BOTTOM_FLANGE_THICKNESS_PG, KEY_DISP_BOTTOM_FLANGE_THICKNESS_PG, TYPE_COMBOBOX, ['All', 'Customized'], True,
+        t4 = (KEY_BOTTOM_FLANGE_THICKNESS_PG, KEY_DISP_BOTTOM_FLANGE_THICKNESS_PG, TYPE_COMBOBOX, VALUES_PLATETHK, True,
               'No Validator')
         options_list.append(t4)
 
@@ -346,7 +348,7 @@ class PlateGirderWelded(Member):
     def fn_torsion_warping(self):
         print( 'Inside fn_torsion_warping', self)
         if self[0] == Torsion_Restraint1:
-            return Warping_Restraint_list_pg
+            return Warping_Restraint_list
         elif self[0] == Torsion_Restraint2:
             return [Warping_Restraint5]
         else:

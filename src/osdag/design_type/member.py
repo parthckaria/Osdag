@@ -2944,6 +2944,9 @@ class Member(Main):
 
         return optimum
 
+    def tab_girder_sec(self, input_dictionary):
+        section = []
+        return section
     ########################################
     # Design Preference Functions End
     ########################################
