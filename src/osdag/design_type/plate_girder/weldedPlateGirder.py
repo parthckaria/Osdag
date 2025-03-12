@@ -42,7 +42,6 @@ class PlateGirderWelded(Member):
 
 
     def __init__(self):
-        print('in constructor')
         super(PlateGirderWelded, self).__init__()
 
     ###############################################
@@ -84,6 +83,8 @@ class PlateGirderWelded(Member):
         return tabs
     def tab_value_changed(self):
         change_tab = []
+        """ You can take a cue from the commented out code below."""
+
 
         # t1 = (KEY_DISP_GIRDERSEC, [KEY_SEC_MATERIAL], [KEY_SEC_FU, KEY_SEC_FY], TYPE_TEXTBOX, self.get_fu_fy_I_section)
         # change_tab.append(t1)
@@ -172,7 +173,7 @@ class PlateGirderWelded(Member):
 
         add_buttons = []
 
-        # t2 = (KEY_DISP_GIRDERSEC, TYPE_COMBOBOX, KEY_SECSIZE, None, None, "Columns") #, KEY_SECSIZE
+        # t2 = (KEY_DISP_GIRDERSEC, TYPE_COMBOBOX, KEY_SECSIZE, None, None, "Columns")
         # add_buttons.append(t2)
 
         return add_buttons
@@ -204,7 +205,6 @@ class PlateGirderWelded(Member):
     ####################################
     # Design Preference Functions End
     ####################################
-
     # Setting up logger and Input and Output Docks
     ####################################
     def module_name(self):
@@ -316,35 +316,6 @@ class PlateGirderWelded(Member):
 
         return options_list
 
-    def fn_profile_section(self):
-
-        profile = self[0]
-        if profile == 'Beams': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-            profile2 = connectdb("Columns", call_type="popup")
-        if profile == 'Columns': #Beam and Column
-            return connectdb("Columns", call_type="popup")
-            # profile2 = connectdb("Columns", call_type="popup")
-        if profile == 'Beams and Columns': #Beam and Column
-            res1 = connectdb("Beams", call_type="popup")
-            res2 = connectdb("Columns", call_type="popup")
-            return list(set(res1 + res2))
-        if profile == 'All': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-        if profile == 'Customized': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-        if profile == 'Thin Web with ITS': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-        if profile == 'Thick Web without ITS': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-        if profile == 'Highway Bridge': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-        if profile == 'Railway Bridge': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-        if profile == 'Industrial Structure': #Beam and Column
-            return connectdb("Beams", call_type="popup")
-
-
     def fn_torsion_warping(self):
         print( 'Inside fn_torsion_warping', self)
         if self[0] == Torsion_Restraint1:
@@ -353,14 +324,6 @@ class PlateGirderWelded(Member):
             return [Warping_Restraint5]
         else:
             return [Warping_Restraint5]
-
-
-    def fn_supp_image(self):
-        print( 'Inside fn_supp_image', self)
-        if self[0] == KEY_DISP_SUPPORT1:
-            return Simply_Supported_img
-        else:
-            return Cantilever_img
 
     def axis_bending_change(self):
         design = self[0]

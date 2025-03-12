@@ -694,7 +694,6 @@ KEY_DISP_PHILO1 = 'Thin Web with ITS'
 KEY_DISP_PHILO2 = 'Thick Web without ITS'
 WEB_PHILOSOPHY_list = list((KEY_DISP_PHILO1, KEY_DISP_PHILO2))
 KEY_DISP_DESIGN_STIFFER = 'Stiffener Design'
-
 ###################################
 # All Input Keys
 ###################################
