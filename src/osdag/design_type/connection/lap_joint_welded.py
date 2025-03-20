@@ -1,10 +1,10 @@
 """
-Module: lap_joint_bolted.py
+Module: lap_joint_welded.py
 Author: Aman
 Date: 2025-02-18
 
 Description:
-    LapJointBolted is a moment connection module that represents a bolted lap joint connection.
+    LapJointWelded is a simple plated connection module that represents a welded lap joint connection.
     It inherits from MomentConnection and follows the same structure and design logic as other
     connection modules (e.g., BeamCoverPlate, ColumnCoverPlate) used in Osdag.
     
@@ -189,7 +189,7 @@ class LapJointWelded(MomentConnection):
 
         options_list = []
 
-        t16 = (KEY_MODULE, KEY_DISP_LAPJOINTBOLTED, TYPE_MODULE, None, True, 'No Validator')
+        t16 = (KEY_MODULE, KEY_DISP_LAPJOINTWELDED, TYPE_MODULE, None, True, 'No Validator')
         options_list.append(t16)
 
         t1 = (None, DISP_TITLE_CM, TYPE_TITLE, None, True, 'No Validator')
@@ -313,7 +313,7 @@ class LapJointWelded(MomentConnection):
 
     def module_name(self):
 
-        return KEY_DISP_LAPJOINTBOLTED
+        return KEY_DISP_LAPJOINTWELDED
     
     def func_for_validation(self, design_dictionary):
 
